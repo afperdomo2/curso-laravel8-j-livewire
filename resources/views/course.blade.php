@@ -2,6 +2,7 @@
 
 @section('content')
     <div class="grid grid-cols-3 gap-4">
+
         <div class="p-8 bg-gray-200 col-span-1">
             <ul class="flex flex-col">
                 <li class="font-medium text-sm text-gray-400 uppercase mb-4">
@@ -19,7 +20,9 @@
                 @endforeach
             </ul>
         </div>
+
         <div class="text-gray-700 col-span-2">
+
             <img src="{{ $course->image }}">
             <h2 class="text-4xl">{{ $course->name }}</h2>
             <p class="">{{ $course->description }}</p>
@@ -34,10 +37,18 @@
                     </p>
                 </div>
             </div>
+
+            <div class="grid grid-cols-2 gap-4 my8">
+                @foreach ($course->similar() as $course)
+                    <x-course-card :course="$course" />
+                @endforeach
+            </div>
+
         </div>
+
     </div>
 
-    <div class="text-center mt-5">
+    <div class="text-center mt-12">
         <h1 class="text-2xl text-gray-700 mb-2 uppercase">Últimos cursos</h1>
         <h2 class="text-xl text-gray-600">Fórmate online como profesional en tecnología</h2>
     </div>
